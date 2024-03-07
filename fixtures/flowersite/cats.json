@@ -1,0 +1,26 @@
+[
+{
+"fields": {
+"name": "Все товары",
+"slug": "all"
+},
+"model": "goods.categories",
+"pk": 4
+},
+{
+"fields": {
+"name": "Цветы",
+"slug": "cvety"
+},
+"model": "goods.categories",
+"pk": 5
+},
+{
+"fields": {
+"name": "Семена",
+"slug": "semena"
+},
+"model": "goods.categories",
+"pk": 6
+}
+]
