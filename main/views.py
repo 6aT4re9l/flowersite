@@ -3,11 +3,10 @@ from goods.models import Categories
 
 
 def index(request):
-    categories = Categories.objects.all()
+
     context = {
         "title": "Главная страница",
         "content": "Магазин цветов",
-        "categories": categories,
     }
     return render(request, "index.html", context)
 
