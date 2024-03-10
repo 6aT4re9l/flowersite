@@ -42,26 +42,26 @@
             </form>
         </div>
 
-        {% for good in goods %}
+        {% for product in goods %}
             <!-- Карта товара -->
             <div class="col-lg-4 col-md-6 p-4">
                 <div class="card border-primary rounded custom-shadow">
-                    {% if good.image %}
-                        <img src="{{ good.image.url }}" class="card-img-top" alt="{{ good.name }}">
+                    {% if product.image %}
+                        <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
                     {% endif %}
                     <div class="card-body">
-                        <a href="#">
-                            <p class="card-title">{{ good.name }}</p>
+                        <a href="{% url "catalog:product" product.slug %}">
+                            <p class="card-title">{{ product.name }}</p>
                         </a>
-                        <p class="card-text text-truncate">{{ good.description }}</p>
+                        <p class="card-text text-truncate">{{ product.description }}</p>
                         <div class="d-flex justify-content-between">
 
-                            {% if good.discount %}
-                                <p><s>{{ good.price }}</s> ₽</p>
-                                <p><strong> {{ good.sell_price }} </strong>₽</p>
-                                <span class="badge bg-warning text-dark">Скидка {{ good.discount }}%</span>
+                            {% if product.discount %}
+                                <p><s>{{ product.price }}</s> ₽</p>
+                                <p><strong> {{ product.sell_price }} </strong>₽</p>
+                                <span class="badge bg-warning text-dark">Скидка {{ product.discount }}%</span>
                             {% else %}
-                                <p><strong>{{ good.price }}</strong>₽</p>
+                                <p><strong>{{ product.price }}</strong>₽</p>
                             {% endif %}
 
                             <a href="#" class="btn">
