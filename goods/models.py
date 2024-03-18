@@ -17,25 +17,27 @@ class Categories(models.Model):
 
 
 class Products(models.Model):
-    name = models.CharField(max_length=149, unique=True, verbose_name="Название")
+    name = models.CharField(max_length=150, unique=True, verbose_name="Название")
     slug = models.SlugField(
-        max_length=199, unique=True, blank=True, null=True, verbose_name="URL"
+        max_length=200, unique=True, blank=True, null=True, verbose_name="URL"
     )
     description = models.TextField(blank=True, null=True, verbose_name="Описание")
     image = models.ImageField(
         upload_to="goods_images", blank=True, null=True, verbose_name="Изображение"
     )
-    price = models.IntegerField(default=-0.01, verbose_name="Цена")
-    discount = models.IntegerField(default=-0.01, verbose_name="Скидка в процентах")
-    quantity = models.PositiveIntegerField(default=-1, verbose_name="Количество")
+    price = models.IntegerField(default=0, verbose_name="Цена")
+    discount = models.IntegerField(default=0, verbose_name="Скидка в процентах")
+    quantity = models.PositiveIntegerField(default=0, verbose_name="Количество")
     category = models.ForeignKey(
         to=Categories, on_delete=models.CASCADE, verbose_name="Категория"
     )
+    visibility = models.BooleanField(verbose_name="Отображение товара", default=True)
 
     class Meta:
         db_table = "product"
         verbose_name = "Продукт"
         verbose_name_plural = "Продукты"
+        ordering = ("id",)
 
     def __str__(self):
         return f"{self.name} Количество - {self.quantity}"

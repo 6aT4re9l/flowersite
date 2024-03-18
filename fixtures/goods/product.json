@@ -1,0 +1,62 @@
+[
+{
+"fields": {
+"category": 5,
+"description": "Розы только с поляны краснючие ваще капец",
+"discount": 15,
+"image": "goods_images/roza.jpg",
+"name": "Розы",
+"price": 100,
+"quantity": 100,
+"slug": "rozy",
+"visibility": true
+},
+"model": "goods.products",
+"pk": 3
+},
+{
+"fields": {
+"category": 6,
+"description": "Жмых жмыхает ваще на 100% кайф круто",
+"discount": 0,
+"image": "goods_images/жмых.jpg",
+"name": "Жмыховые семена",
+"price": 3,
+"quantity": 1000,
+"slug": "zhmyhovye-semena",
+"visibility": true
+},
+"model": "goods.products",
+"pk": 4
+},
+{
+"fields": {
+"category": 5,
+"description": "Гурана ваще кайф круто классно",
+"discount": 5,
+"image": "goods_images/гуарана.jpeg",
+"name": "Гурана",
+"price": 50,
+"quantity": 100,
+"slug": "gurana",
+"visibility": true
+},
+"model": "goods.products",
+"pk": 5
+},
+{
+"fields": {
+"category": 5,
+"description": "маме подари заебал",
+"discount": 100,
+"image": "goods_images/тюльпан.jpeg",
+"name": "Тюльпан",
+"price": 5000,
+"quantity": 150,
+"slug": "tyulpan",
+"visibility": true
+},
+"model": "goods.products",
+"pk": 6
+}
+]
