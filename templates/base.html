@@ -9,6 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static "deps/css/bootstrap/bootstrap.min.css" %}">
     <link rel="stylesheet" href="{% static "deps/css/my_css.css" %}">
+    <link rel="stylesheet" href="{% static "deps/css/my_footer_css.css" %}">
+    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500&display=swap" rel="stylesheet">
     <!-- Стиль footer-a для главной страницы -->
     {% block css %}
 
@@ -182,6 +184,7 @@
             </div>
             <div class="col-lg-10">
                 <!-- Контент на странице -->
+                {% include "include/notification.html" %}
                 {% block content %}
 
                 {% endblock %}
@@ -190,6 +193,9 @@
     </div>
 </section>
 {% block footer %}
+
+{% endblock %}
+{% block script %}
 
 {% endblock %}
 <script src="{% static "deps/js/jquery/jquery-3.7.0.min.js" %}"></script>

@@ -149,7 +149,6 @@ body {
     outline: none;
 }
 
-/**/
 .a-container {
     z-index: 100;
     left: calc(100% - 600px);
@@ -223,7 +222,23 @@ body {
     transition: 0.25s;
 }
 
-/**/
+/* Кнопки входа и регистрации POST*/
+.post_button {
+    cursor: pointer;
+}
+
+.post_button:hover {
+    box-shadow: 6px 6px 10px #d1d9e6, -6px -6px 10px #f9f9f9;
+    transform: scale(0.985);
+    transition: 0.25s;
+}
+
+.post_button:active, .post_button:focus {
+    box-shadow: 2px 2px 6px #d1d9e6, -2px -2px 6px #f9f9f9;
+    transform: scale(0.97);
+    transition: 0.25s;
+}
+
 .is-txr {
     left: calc(100% - 400px);
     transition: 1.5s;
