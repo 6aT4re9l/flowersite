@@ -12,29 +12,64 @@
 <body>
 <div class="main">
     <div class="container a-container" id="a-container">
-        <form class="form" id="a-form" method="post" action="{% url "user:login" %}">
+        <form class="form" id="a-form" method="post" action="{% url "user:register_or_login" %}">
             {% csrf_token %}
             <h2 class="form_title title">Создать аккаунт</h2>
             <img class="flower" src="https://image.ibb.co/d5X6pn/1357d638624297b.jpg" alt="flower">
-            <input class="form__input" type="text" placeholder="Ваше имя">
-            <input class="form__input" type="text" placeholder="Электронная почта">
-            <input class="form__input" type="password" placeholder="Пароль">
-            <button class="form__button button submit" type="submit">Зарегистрироваться</button>
+            <div>
+                <input id="id_username" name="username" class="form__input" type="text" required placeholder="Ваше имя"
+                       value="{% if registr_form.username.value %}{{ registr_form.username.value }}{% endif %}">
+                {% if registr_form.username.errors %}
+                    <div class="alert alert-danger alert-dismissible fade show">{{ registr_form.username.errors }}</div>
+                {% endif %}
+            </div>
+            <div>
+                <input id="id_email" class="form__input" name="email" type="email" required
+                       placeholder="Электронная почта"
+                       value="{% if registr_form.email.value %}{{ registr_form.email.value }}{% endif %}">
+                {% if registr_form.email.errors %}
+                    <div class="alert alert-danger alert-dismissible fade show">{{ registr_form.email.errors }}</div>
+                {% endif %}
+            </div>
+            <div>
+                <input id="id_password1" name="password1" class="form__input" type="password" placeholder="Пароль"
+                       required>
+                {% if registr_form.password1.errors %}
+                    <div class="alert alert-danger alert-dismissible fade show">{{ registr_form.password1.errors }}</div>
+                {% endif %}
+            </div>
+            <div>
+                <input id="id_password2" name="password2" class="form__input" type="password"
+                       placeholder="Подтвердите пароль" required>
+                {% if registr_form.password2.errors %}
+                    <div class="alert alert-danger alert-dismissible fade show">{{ registr_form.password2.errors }}</div>
+                {% endif %}
+            </div>
+            <button type="submit" class="post_button button">Зарегистрироваться</button>
         </form>
     </div>
     <div class="container b-container" id="b-container">
-        <form class="form" id="b-form" method="post" action="{% url "users:login" %}">
+        <form class="form" id="b-form" method="post" action="{% url "users:register_or_login" %}">
             {% csrf_token %}
-            {% if form.non_field_errors %}
-                <p>{{ form.non_field_errors }}</p>
-            {% endif %}
             <h2 class="form_title title">Войти в личный кабинет</h2>
             <img class="flower" src="https://preview.ibb.co/jvu2Un/0057c1c1bab51a0.jpg" alt="flower"/>
-            <input id="id_username" name="username" value="{% if form.username.value %} {{ form.username.value }}
-            {% endif %}" class="form__input" type="text"
-                   placeholder="Имя пользователя"
-                   required>
-            <input id="id_password" name="password" class="form__input" type="password" placeholder="Пароль" required>
+            {% if login_form.non_field_errors %}
+                <p>{{ login_form.non_field_errors }}</p>
+            {% endif %}
+            <div>
+                <input id="id_username" name="username" class="form__input" type="text" placeholder="Имя пользователя"
+                       value="{% if login_form.username.value %}{{ login_form.username.value }}{% endif %}" required>
+                {% if login_form.username.errors %}
+                    <div class="alert alert-danger alert-dismissible fade show">{{ login_form.username.errors }}</div>
+                {% endif %}
+            </div>
+            <div>
+                <input id="id_password" name="password" class="form__input" type="password" placeholder="Пароль"
+                       required>
+                {% if login_form.password.errors %}
+                    <div class="alert alert-danger alert-dismissible fade show">{{ login_form.password.errors }}хуй</div>
+                {% endif %}
+            </div>
             <a class="form__link">Забыли пароль?</a>
             <button type="submit" class="post_button button">Войти</button>
         </form>
