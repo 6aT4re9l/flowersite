@@ -1,8 +1,12 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block modal_cart %}
+    {% include 'include/cart_button.html' %}
+{% endblock %}
+
 {% block css %}
-	  <link rel="stylesheet" href="{% static "deps/css/my_footer_css.css" %}">
+    <link rel="stylesheet" href="{% static "deps/css/my_footer_css.css" %}">
 {% endblock %}
 
 {% block content %}
@@ -11,7 +15,7 @@
 {% endblock %}
 
 {% block footer %}
-	<footer class="py-4 bg-dark">
+    <footer class="py-4 bg-dark">
         <div class="container">
             <p class="m-0 text-center text-white">Copyright &copy; Home Python Hub Studio 2023</p>
         </div>

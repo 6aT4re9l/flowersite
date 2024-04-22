@@ -11,9 +11,12 @@
 </head>
 <body>
 <div class="main">
-    <div class="container a-container" id="a-container">
+    <div class="container a-container is-txl" id="a-container">
         <form class="form" id="a-form" method="post" action="{% url "user:register_or_login" %}">
             {% csrf_token %}
+            {% if request.GET.next %}
+                <input type="hidden" name="next" value="{{ request.GET.next }}">
+            {% endif %}
             <h2 class="form_title title">Создать аккаунт</h2>
             <img class="flower" src="https://image.ibb.co/d5X6pn/1357d638624297b.jpg" alt="flower">
             <div>
@@ -48,7 +51,7 @@
             <button type="submit" class="post_button button">Зарегистрироваться</button>
         </form>
     </div>
-    <div class="container b-container" id="b-container">
+    <div class="container b-container is-txl is-z200" id="b-container">
         <form class="form" id="b-form" method="post" action="{% url "users:register_or_login" %}">
             {% csrf_token %}
             <h2 class="form_title title">Войти в личный кабинет</h2>
@@ -74,22 +77,21 @@
             <button type="submit" class="post_button button">Войти</button>
         </form>
     </div>
-    <div class="switch" id="switch-cnt">
+    <div class="switch is-txr" id="switch-cnt">
         <img src="{% static "deps/image/blue flowers.jpeg" %}" alt="">
         <div class="switch__circle"></div>
         <div class="switch__circle switch__circle--t"></div>
         <div class="switch__container" id="switch-c1">
             <h2 class="switch__title title">Welcome back!</h2>
-            <p class="switch__description description">To keep connected with us please login with your personal
-                info</p>
             <button class="switch__button button switch-btn">Войти</button>
         </div>
         <div class="switch__container is-hidden" id="switch-c2">
             <h2 class="switch__title title">Hello Friend !</h2>
-            <p class="switch__description description">Enter your personal details and start journey with us</p>
             <button class="switch__button button switch-btn">Зарегистрироваться</button>
         </div>
+
     </div>
+
 </div>
 <script src="{% static "deps/js/login.js" %}"></script>
 </body>

@@ -1,4 +1,5 @@
 from django.contrib import auth, messages
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from users.forms import UserLoginForm, UserRegistrationForm
@@ -15,11 +16,17 @@ def register_or_login(request):
             log_user = auth.authenticate(username=username, password=password)
             if log_user:
                 auth.login(request, log_user)
+                messages.success(request, username, "Вы успешно вышли в аккаунт")
+                redirect_page = request.POST.get("next", None)
+                if redirect_page and redirect_page != reverse("user:logout"):
+                    return HttpResponseRedirect(request.POST.get("next"))
+
                 return HttpResponseRedirect(reverse("main:index"))
         elif registr_form.is_valid():
             registr_form.save()
-            user = registr_form
+            user = registr_form.save()
             auth.login(request, user)
+            messages.success(request, user.username, "Вы успешно вышли в аккаунт")
             return HttpResponseRedirect(reverse("main:index"))
     else:
         registr_form = UserRegistrationForm()
@@ -35,13 +42,11 @@ def register_or_login(request):
     )
 
 
-def profile(request):
-    context = {
-        "title": "Личный кабинет",
-    }
-    return render(request, "", context)
+def users_cart(request):
+    return render(request, "users/users_cart.html")
 
 
+@login_required
 def logout(request):
     messages.success(request, f"{request.user.username}, Вы вышли из аккаунта")
     auth.logout(request)
